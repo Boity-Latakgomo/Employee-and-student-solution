@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="http://prismlibrary.com"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ULProject.Views.MainFlyoutPage">
+
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Menu"
+                     IconImageSource="{OnPlatform iOS=hamburger.png}"
+                             BackgroundColor="{StaticResource PrimaryColor}">
+            <ScrollView>
+                <StackLayout VerticalOptions="StartAndExpand"
+                             Padding="0, 0, 0, 8">
+                <RelativeLayout VerticalOptions="StartAndExpand"
+                                BackgroundColor="Green">
+                        <Image Source="flyout_icon"
+                            Aspect="AspectFit"
+                       x:Name="FlyoutImage"
+                           RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=1}"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=1}"/>
+                    <Label Text="William Nkuna"
+                           FontAttributes="Bold"
+                           FontSize="24"
+                           Margin="24, 0, 0, 0"
+                           RelativeLayout.YConstraint="{ConstraintExpression
+                        Type=RelativeToView,
+                        ElementName=FlyoutImage,
+                        Property=Height,
+                        Factor=0,
+                        Constant=5}"
+                           TextColor="{StaticResource PrimaryLightTextColor}"/>
+                </RelativeLayout>
+
+                    <Label Text="Page 1"
+                           FontSize="18"
+                           Margin="8, 0"
+                           TextColor="{StaticResource PinkTextColor}"/>
+                    <BoxView HeightRequest="1"
+                             Color="#707070"
+                             Margin="8"/>
+                    <Label Text="Page 2"
+                           FontSize="18"
+                           Margin="8, 0"
+                           TextColor="{StaticResource PinkTextColor}"/>
+                    <BoxView HeightRequest="1"
+                             Color="#707070"
+                             Margin="8"/>
+                    <Label Text="Get userID"
+                           FontSize="18"
+                           Margin="8, 0"
+                           TextColor="{StaticResource PinkTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ID}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <BoxView HeightRequest="1"
+                             Color="#707070"
+                             Margin="8"/>
+                    <Label Text="Logout"
+                           FontSize="18"
+                           Margin="8, 0"
+                           TextColor="{StaticResource PinkTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+
+            
+
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    
+</FlyoutPage>

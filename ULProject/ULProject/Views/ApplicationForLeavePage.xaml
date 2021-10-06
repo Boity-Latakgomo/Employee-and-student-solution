@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:controls="clr-namespace:ULProject.Controls"
+             x:Class="ULProject.Views.ApplicationForLeavePage">
+
+    <NavigationPage.TitleView>
+        <Label Text="Leave application"
+               TextColor="#EFEFEF"
+               FontAttributes="Bold"
+               FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <Frame HasShadow="True"
+           BorderColor="#E4E4E4"
+           HorizontalOptions="Fill"
+           BackgroundColor="#EFEFEF"
+           Margin="12"
+           Padding="16">
+        <StackLayout>
+       
+        <StackLayout VerticalOptions="StartAndExpand"
+                     HorizontalOptions="FillAndExpand">
+                <Label Text="Leave"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"
+                       Margin="2, 8, 0, 0"/>
+                <controls:NonlinedBorderedPicker Title="Select a leave"
+                                      TitleColor="{StaticResource PrimaryDarkTextColor}"
+                                      ItemsSource="{Binding Leave}"
+                                      ItemDisplayBinding="{Binding Type}"
+                                      SelectedItem="{Binding SelectedLeave}"/>
+        <Label Text="Number of days"
+               TextColor="{StaticResource PrimaryDarkTextColor}"
+               Margin="2, 8, 0 ,0"/>
+                <controls:NonlinedBorderedEntry Margin="0"
+                                                Keyboard="Numeric"
+                                                Text="{Binding NumberOfDays}"/>
+
+                <Label Text="Description"
+               TextColor="{StaticResource PrimaryDarkTextColor}"
+               Margin="2,8,0,0"/>
+                <controls:NonlinedBorderedEditor Margin="0"
+                                                 HeightRequest="100"
+                                                 Text="{Binding Description}"/>
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Button Text="Save"
+                    BorderColor="#481F88"
+                    BorderWidth="3"
+                    BackgroundColor="#B8A8D1"
+                    Margin="24, 0"
+                    CornerRadius="50"
+                    Command="{Binding SaveCommand}"/>
+            <Button Text="Cancel"
+                        BorderColor="#481F88"
+                        BorderWidth="3"
+                        BackgroundColor="#EC7E76"
+                        Margin="24, 0"
+                        Command="{Binding DeleteCommand}"
+                        CornerRadius="50"/>
+        </StackLayout>
+    </StackLayout>
+    </Frame>
+    
+</ContentPage>

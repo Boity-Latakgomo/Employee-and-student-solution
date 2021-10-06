@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ULProject.Views.MainPage">
+
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}"
+               TextColor="#EFEFEF"
+               FontAttributes="Bold"
+               FontSize="20"/>
+    </NavigationPage.TitleView>
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout"
+                     Command="{Binding LogoutCommand}"
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>-->
+
+    <ScrollView>
+        <StackLayout>
+        <Image Source="banner.jpg"
+               Aspect="Fill"
+               HeightRequest="200"/>
+            
+
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  Padding="8">
+
+                <Frame HasShadow="True"
+                       x:Name="ApplyForAleave"
+                       BackgroundColor="#8569AF"
+                       Grid.Row="0"
+                       CornerRadius="10"
+                       Grid.Column="0"
+                       Margin="8">
+                    <Label Text="Leave Application"
+                           TextColor="{StaticResource PrimaryLightTextColor}"
+                           FontAttributes="Bold"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LeaveApplicationOptionCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame HasShadow="True"
+                       Grid.Row="0"
+                       CornerRadius="10"
+                       BackgroundColor="#8569AF"
+                       Grid.Column="1"
+                       Margin="8">
+                    <Label Text="Profile" 
+                           TextColor="{StaticResource PrimaryLightTextColor}"
+                           FontAttributes="Bold"/>
+                </Frame>
+                <Frame HasShadow="True"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       CornerRadius="10"
+                       BackgroundColor="#8569AF"
+                       Margin="8">
+                    <Label Text="Label3" />
+                </Frame>
+                <Frame HasShadow="True"
+                       Grid.Row="1"
+                       CornerRadius="10"
+                       BackgroundColor="#8569AF"
+                       Grid.Column="1"
+                       Margin="8">
+                    <Label Text="Label4" />
+                </Frame>
+                <Frame HasShadow="True"
+                       Grid.Row="2"
+                       CornerRadius="10"
+                       Grid.Column="0"
+                       BackgroundColor="#8569AF"
+                       Margin="8">
+                    <Label Text="Label5" />
+                </Frame>
+                <Frame HasShadow="True"
+                       Grid.Row="2"
+                       CornerRadius="10"
+                       Grid.Column="1"
+                       BackgroundColor="#8569AF"
+                       Margin="8">
+                    <Label Text="Label6" />
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

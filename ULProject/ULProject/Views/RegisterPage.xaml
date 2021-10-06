@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.RegisterPage"
+             xmlns:controls="clr-namespace:ULProject.Controls"
+             BackgroundImageSource="registerpic.png">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Frame CornerRadius="24"  
+           HasShadow="True"
+           Padding="0, 8"
+           BackgroundColor="{StaticResource PurpleColor}"
+           Opacity="0.8"
+           VerticalOptions="EndAndExpand" 
+           Margin="8"
+           Grid.Row="1">
+            
+            <ScrollView>
+
+                <StackLayout 
+                    Padding="12, 32, 12, 0">
+            <Label 
+                    Text="Register" 
+                    HorizontalOptions="Center" 
+                    FontSize="36"
+                    Margin="24"
+                    TextColor="#C7C7C7"/>
+            <controls:FloatingLabelInput Title="Full names" 
+                                         Margin="0, 24, 0, 0"
+                                         Text="{Binding RegisterFullNames}"/>
+            <controls:FloatingLabelInput Title="Surname"
+                                         Margin="0, 24, 0, 0"
+                                         Text="{Binding RegisterSurname}"/>
+            <controls:FloatingLabelInput Title="Phone number"
+                                         Margin="0, 24, 0, 0"
+                                         Text="{Binding RegisterPhoneNumber}"/>
+            <controls:FloatingLabelInput Title="Email" 
+                                         Margin="0, 24, 0, 0"
+                                         Text="{Binding RegisterEmail}"/>
+            <controls:FloatingLabelInput Title="Password" 
+                                         Margin="0, 24, 0, 0"
+                                         IsPassword="True" 
+                                         Text="{Binding RegisterPassword}"/>
+            <Label  Text="Sign in"
+                   TextDecorations="Underline"
+                    TextColor="#2E8CD6"
+                    HorizontalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToLoginCommand}" />
+                    </Label.GestureRecognizers>
+            </Label>
+            <Button Text="submit"
+                    BackgroundColor="#B02079"
+                    TextColor="#C7C7C7" 
+                    Margin="30, 24, 30, 12"
+                    CornerRadius="18"
+                    Command="{Binding RegisterCommand}"/>
+        </StackLayout>
+            </ScrollView>
+        </Frame>
+        
+    </Grid>
+
+</ContentPage>

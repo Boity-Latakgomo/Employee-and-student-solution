@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.LoginPage"
+             xmlns:controls="clr-namespace:ULProject.Controls"
+             BackgroundImageSource="loginpic.jpg">
+
+    
+    <Frame CornerRadius="24" 
+           Padding="0, 8"
+           Margin="24, 0"
+           Opacity="0.8"
+           HasShadow="True"
+           BackgroundColor="{StaticResource PrimaryColor}"
+           VerticalOptions="CenterAndExpand">
+        <ScrollView>
+            
+
+        <StackLayout
+                 VerticalOptions="Center"
+                 Margin="0, 0"
+                 Padding="12, 12, 12, 0">
+            <Label  Text="Login" 
+                    HorizontalOptions="Center" 
+                    FontSize="36"
+                    Margin="24"
+                    TextColor="#C7C7C7"/>
+           <controls:FloatingLabelInput Title="Email"
+                                        Padding="8, 2"
+                                        Margin="0, 24, 0, 0"
+                                        Text="{Binding EmailAddress}"/>
+            <controls:FloatingLabelInput Title="Password" 
+                                         IsPassword="True" 
+                                         Margin="0, 24, 0, 0"
+                                         Padding="8, 2"
+                                         Text="{Binding Password}"/>
+            <Label Text="Reset password"
+                   TextColor="#2E8CD6"
+               HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ResetPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Don't have account? signup"
+               TextColor="#2E8CD6"
+               HorizontalOptions="Center"
+                   Margin="0, 24, 0, 0"
+                   TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToRegisterCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Button Text="submit"
+                BackgroundColor="#B02079"
+                TextColor="#C7C7C7" 
+                Margin="30, 8, 30, 12"
+                CornerRadius="18"
+                Command="{Binding LoginCommand}"/>
+            </StackLayout>
+        </ScrollView>
+
+    </Frame>
+
+</ContentPage>
