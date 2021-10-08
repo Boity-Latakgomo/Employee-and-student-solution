@@ -5,6 +5,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,20 @@ namespace ULProject.ViewModels
             UserDialogs.Instance.Loading();
             RequestClose(null);
 
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
+
+            try
+            {
+                MailAddress m = new MailAddress(ResetPasswordSubmittedEmail);
+            }
+            catch (FormatException)
+            {
+                UserDialogs.Instance.Loading().Dispose();
+                UserDialogs.Instance.Toast("Enter valid email address");
+            }
+
+
+
+    var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
             // TODO: Check with a user if they did enter the correct email if the app loads more than 25 seconds
             await authProvider.SendPasswordResetEmailAsync(ResetPasswordSubmittedEmail);
 

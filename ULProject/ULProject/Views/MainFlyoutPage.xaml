@@ -25,7 +25,7 @@
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=1}"/>
-                    <Label Text="William Nkuna"
+                    <Label Text="Boitumelo Latakgomo"
                            FontAttributes="Bold"
                            FontSize="24"
                            Margin="24, 0, 0, 0"

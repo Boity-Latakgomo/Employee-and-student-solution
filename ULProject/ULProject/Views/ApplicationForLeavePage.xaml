@@ -59,7 +59,7 @@
                         BorderWidth="3"
                         BackgroundColor="#EC7E76"
                         Margin="24, 0"
-                        Command="{Binding DeleteCommand}"
+                        Command="{Binding CancelCommand}"
                         CornerRadius="50"/>
         </StackLayout>
     </StackLayout>

@@ -18,6 +18,8 @@ namespace ULProject.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
+        public string EmailAddress { get; set; }
+        public string Password { get; set; }
         public DelegateCommand ToRegisterCommand { get; }
         public DelegateCommand LoginCommand { get; }
         public INavigationService _navigationService { get; }

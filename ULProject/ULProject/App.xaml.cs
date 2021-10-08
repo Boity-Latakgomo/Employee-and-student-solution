@@ -23,12 +23,12 @@ namespace ULProject
 
         protected override async void OnInitialized()
         {
-            GlobalResources.Initialise();
-            InitializeComponent();
+            GlobalResources.Initialise(); // TODO: this
+            InitializeComponent(); // link this file with the corresponding XAML file
 
             //await NavigationService.NavigateAsync("NavigationPage/ApplicationForLeavePage");
 
-            if (string.IsNullOrEmpty(Preferences.Get("FirebaseRefreshToken", string.Empty)))
+            if (string.IsNullOrEmpty(Preferences.Get("FirebaseRefreshToken", string.Empty))) // TODO: this
             {
                 await NavigationService.NavigateAsync("LoginPage");
             }

@@ -58,6 +58,8 @@ namespace ULProject.ViewModels
                 else
                 {
                     UserDialogs.Instance.Loading().Dispose();
+                    UserDialogs.Instance.Toast("Please make sure all fields are valid");
+
                 }
             }
             else
