@@ -11,8 +11,8 @@ namespace ULProject
 {
     // TODO:Update user token frequently
 
-    // This app uses firebase realtime database and firebase Auth: email -> WilliamDeveloper , project -> Practice
-    // Mockup, in boxfusion account -> New Project 2 
+    // This app uses firebase realtime database and firebase Auth: email -> wDeveloper , project -> Practice
+    // -> New Project 2 
     public partial class App
     {
         
