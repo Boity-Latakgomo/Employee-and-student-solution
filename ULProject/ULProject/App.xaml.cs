@@ -11,6 +11,10 @@ namespace ULProject
 {
     // TODO:Update user token frequently
 
+    //github repo
+    //boitylatakgomo@gmail.com -> Employee-and-Student-Solution
+
+    // Firebase
     // This app uses firebase realtime database and firebase Auth: email -> wDeveloper , project -> Practice
     // -> New Project 2 
     public partial class App
