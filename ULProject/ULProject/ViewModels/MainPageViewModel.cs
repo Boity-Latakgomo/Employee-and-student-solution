@@ -15,6 +15,7 @@ namespace ULProject.ViewModels
         private INavigationService _navigationService { get; }
         //public DelegateCommand LogoutCommand { get; }
         public DelegateCommand LeaveApplicationOptionCommand { get; }
+        public DelegateCommand ProfileCommand { get; }
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
@@ -22,8 +23,13 @@ namespace ULProject.ViewModels
             _navigationService = navigationService;
             //LogoutCommand = new DelegateCommand(logout);
             LeaveApplicationOptionCommand = new DelegateCommand(navigateToLeaveApplication);
+            ProfileCommand = new DelegateCommand(navigateToProfile);
         }
 
+        private async void navigateToProfile()
+        {
+            await _navigationService.NavigateAsync("ProfilePage");
+        }
         private async void navigateToLeaveApplication()
         {
             await _navigationService.NavigateAsync("ApplicationForLeavePage");

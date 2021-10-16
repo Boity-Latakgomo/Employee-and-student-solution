@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.ProfilePage"
+             Title="Profile">
+
+    <Grid Padding="8, 8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <Image Grid.Row="0"
+               Source="bigprofile.png"
+               Margin="0,12,0,0"/>
+
+        <StackLayout Grid.Row="1" 
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Padding="16, 0">
+
+            <BoxView Color="#991DFF" HeightRequest="1"/>
+
+
+            <Grid ColumnDefinitions="*,3*"
+                  Margin="0,12,0,0">
+                <Label Text="Name: " 
+                       Grid.Column="0"
+                       Margin="0,0,0,3"
+                       VerticalOptions="End"/>
+                <Label Text="Boitumelo"
+                       Grid.Column="1"
+                       VerticalOptions="End"
+                       TextColor="#777777"
+                       FontSize="24"/>
+            </Grid>
+            <Grid ColumnDefinitions="*,3*">
+                <Label Text="Surname: " 
+                       Grid.Column="0"
+                       Margin="0,0,0,3"
+                       VerticalOptions="End"/>
+                <Label Text="Latakgomo"
+                       Grid.Column="1"
+                       VerticalOptions="End"
+                       TextColor="#777777"
+                       FontSize="24"/>
+            </Grid>
+            <Grid ColumnDefinitions="*,3*">
+                <Label Text="Phone No: " 
+                       Grid.Column="0"
+                       Margin="0,0,0,3"
+                       VerticalOptions="End"/>
+                <Label Text="071 111 1111"
+                       Grid.Column="1"
+                       VerticalOptions="End"
+                       TextColor="#777777"
+                       FontSize="24"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,3*"
+                  Margin="0,0,0,24">
+                <Label Text="Email: " 
+                       Grid.Column="0"
+                       Margin="0,0,0,3"
+                       VerticalOptions="End"/>
+                <Label Text="myemail@gmail.com"
+                       Grid.Column="1"
+                       VerticalOptions="End"
+                       TextColor="#777777"
+                       FontSize="24"/>
+            </Grid>
+
+            <BoxView Color="#991DFF"
+                     HeightRequest="1"
+                     HorizontalOptions="Center"
+                     WidthRequest="100"/>
+        </StackLayout>
+        <Frame Grid.Row="2"
+               BackgroundColor="#991DFF"
+               HorizontalOptions="End"
+               WidthRequest="40"
+               HeightRequest="40"
+               HasShadow="True"
+               CornerRadius="50">
+            <Image Source="editpen.png"/>
+        </Frame>
+    </Grid>
+
+</ContentPage>

@@ -55,6 +55,7 @@ namespace ULProject
             containerRegistry.RegisterForNavigation<MainFlyoutPage, MainFlyoutPageViewModel>();
 
             containerRegistry.RegisterDialog<ResetPasswordDialog, ResetPasswordDialogViewModel>();
+            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
         }
     }
 }

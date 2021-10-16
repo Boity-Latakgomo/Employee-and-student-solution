@@ -37,6 +37,7 @@
                     <StackLayout HorizontalOptions="Center">
                         <Image Source="application.png"/>
                         <Label Text="Leave Application"
+                               HorizontalTextAlignment="Center"
                            TextColor="{StaticResource PrimaryLightTextColor}"
                            FontAttributes="Bold"/>
                     </StackLayout>
@@ -53,10 +54,13 @@
                     <StackLayout HorizontalOptions="Center">
                         <Image Source="profile.png"/>
                         <Label Text="Profile" 
+                               HorizontalTextAlignment="Center"
                            TextColor="{StaticResource PrimaryLightTextColor}"
                            FontAttributes="Bold"/>
                     </StackLayout>
-                    
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame HasShadow="True"
                        Grid.Row="1"
