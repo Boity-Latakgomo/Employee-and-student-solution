@@ -32,11 +32,14 @@
                        BackgroundColor="#8569AF"
                        Grid.Row="0"
                        CornerRadius="10"
-                       Grid.Column="0"
+                       Grid.Column="1"
                        Margin="8">
-                    <Label Text="Leave Application"
+                    <StackLayout HorizontalOptions="Center">
+                        <Image Source="application.png"/>
+                        <Label Text="Leave Application"
                            TextColor="{StaticResource PrimaryLightTextColor}"
                            FontAttributes="Bold"/>
+                    </StackLayout>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding LeaveApplicationOptionCommand}"/>
                     </Frame.GestureRecognizers>
@@ -45,11 +48,15 @@
                        Grid.Row="0"
                        CornerRadius="10"
                        BackgroundColor="#8569AF"
-                       Grid.Column="1"
+                       Grid.Column="0"
                        Margin="8">
-                    <Label Text="Profile" 
+                    <StackLayout HorizontalOptions="Center">
+                        <Image Source="profile.png"/>
+                        <Label Text="Profile" 
                            TextColor="{StaticResource PrimaryLightTextColor}"
                            FontAttributes="Bold"/>
+                    </StackLayout>
+                    
                 </Frame>
                 <Frame HasShadow="True"
                        Grid.Row="1"

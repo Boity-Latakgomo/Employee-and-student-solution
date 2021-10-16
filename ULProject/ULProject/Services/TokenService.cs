@@ -19,15 +19,11 @@ namespace ULProject.Services
         public static void SetTokenPreference(string serializedTokenContent)
         {
             Preferences.Set(Constants.TokenKey, serializedTokenContent);
-
-            // Delete this
-            var a = Preferences.Get(Constants.TokenKey, string.Empty);
         }
 
         // This returns the exact token
         public static string GetIdToken()
         {
-
             Token tokenObject = GetTokenObject();
             return tokenObject.idToken;
         }

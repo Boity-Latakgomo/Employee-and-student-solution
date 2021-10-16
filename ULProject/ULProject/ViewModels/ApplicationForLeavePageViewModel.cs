@@ -58,7 +58,6 @@ namespace ULProject.ViewModels
                 new LeaveType{Type = "Random Leave"}
             };
         }
-
         private async void ValidateData()
         {
             //if (SelectedLeave == null)
@@ -80,8 +79,8 @@ namespace ULProject.ViewModels
         private async Task Save(string Leave)
         {
             UserDialogs.Instance.Loading("Saving...");
-            IDatabaseServices databaseservice = new DatabaseServices();
-            bool isSuccessful = await  databaseservice.AddLeaveApplicationDetails(Leave, NumberOfDays, Description);
+            DatabaseServices databaseService = new DatabaseServices();
+            bool isSuccessful = await databaseService.AddLeaveApplicationDetails(Leave, NumberOfDays, Description);
             if (isSuccessful) 
             {
                 UserDialogs.Instance.Loading().Dispose();

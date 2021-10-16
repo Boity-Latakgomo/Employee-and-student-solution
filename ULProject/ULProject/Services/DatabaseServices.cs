@@ -12,7 +12,7 @@ namespace ULProject.Services
     public class DatabaseServices : IDatabaseServices
     {
         #region firebase constants
-        static string auth = "xCWrwXdGYLhPoU8eAKG2D1DG2TQp7xuGTcRvfQGV"; //  app secret
+        private static string auth = "xCWrwXdGYLhPoU8eAKG2D1DG2TQp7xuGTcRvfQGV"; //  app secret
 
         //FirebaseClient firebase = new FirebaseClient("https://practice-ce7fe-default-rtdb.firebaseio.com/");
         FirebaseClient firebase = new FirebaseClient("https://practice-ce7fe-default-rtdb.firebaseio.com/", 
