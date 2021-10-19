@@ -11,7 +11,8 @@
     </NavigationPage.TitleView>
 
     <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout"
+        <ToolbarItem Text="
+    "
                      Command="{Binding LogoutCommand}"
                      Order="Secondary"/>
     </ContentPage.ToolbarItems>-->

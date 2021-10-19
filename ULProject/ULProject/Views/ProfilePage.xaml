@@ -32,7 +32,7 @@
                        Grid.Column="0"
                        Margin="0,0,0,3"
                        VerticalOptions="End"/>
-                <Label Text="Boitumelo"
+                <Label Text="{Binding Name}"
                        Grid.Column="1"
                        VerticalOptions="End"
                        TextColor="#777777"
@@ -43,7 +43,7 @@
                        Grid.Column="0"
                        Margin="0,0,0,3"
                        VerticalOptions="End"/>
-                <Label Text="Latakgomo"
+                <Label Text="{Binding Surname}"
                        Grid.Column="1"
                        VerticalOptions="End"
                        TextColor="#777777"
@@ -54,7 +54,7 @@
                        Grid.Column="0"
                        Margin="0,0,0,3"
                        VerticalOptions="End"/>
-                <Label Text="071 111 1111"
+                <Label Text="{Binding PhoneNumber}"
                        Grid.Column="1"
                        VerticalOptions="End"
                        TextColor="#777777"
@@ -67,7 +67,7 @@
                        Grid.Column="0"
                        Margin="0,0,0,3"
                        VerticalOptions="End"/>
-                <Label Text="myemail@gmail.com"
+                <Label Text="{Binding EmailAddress}"
                        Grid.Column="1"
                        VerticalOptions="End"
                        TextColor="#777777"

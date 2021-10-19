@@ -3,6 +3,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ULProject.Models;
@@ -56,6 +57,21 @@ namespace ULProject.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task<UserDetails> GetUser(string EmailUserID)
+        {
+            return (await firebase
+             .Child("EmployeeSolution")
+            .Child("Users")
+            .Child(EmailUserID)
+              .OnceAsync<UserDetails>()).Select(item => new UserDetails
+              {
+                  EmailAddress = item.Object.EmailAddress,
+                  FullName = item.Object.FullName,
+                  PhoneNumber = item.Object.PhoneNumber,
+                  Surname = item.Object.Surname
+              }).ToList().FirstOrDefault();
         }
 
         //public async Task<bool> NoteExist()

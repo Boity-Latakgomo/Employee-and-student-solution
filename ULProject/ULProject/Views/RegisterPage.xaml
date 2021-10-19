@@ -36,7 +36,7 @@
                     FontSize="36"
                     Margin="24"
                     TextColor="#C7C7C7"/>
-            <controls:FloatingLabelInput Title="Full names" 
+            <controls:FloatingLabelInput Title="First Name" 
                                          Margin="0, 24, 0, 0"
                                          Text="{Binding RegisterFullNames}"/>
             <controls:FloatingLabelInput Title="Surname"

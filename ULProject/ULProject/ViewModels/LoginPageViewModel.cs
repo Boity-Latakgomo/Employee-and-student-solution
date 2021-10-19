@@ -94,17 +94,35 @@ namespace ULProject.ViewModels
 
                     var content = await auth.GetFreshAuthAsync();
 
-                    var serializedTokenContent = JsonConvert.SerializeObject(content);
+                    var userId = auth.User.LocalId;
 
-                    // this saves the returned value into preferences
-                    TokenService.SetTokenPreference(serializedTokenContent);
+                    DatabaseServices databaseServices = new DatabaseServices();
+                    UserDetails user = await databaseServices.GetUser(userId);
+                    if(user != null)
+                    {
 
-                    await _navigationService.NavigateAsync("/MainFlyoutPage/NavigationPage/MainPage");
-                    UserDialogs.Instance.Loading().Dispose();
-                    UserDialogs.Instance.Toast("Login successful");
+                        var serializedTokenContent = JsonConvert.SerializeObject(content);
+                        var serializedUserDetails = JsonConvert.SerializeObject(user);
+
+                        // this saves the returned value into preferences
+                        TokenService.SetTokenPreference(serializedTokenContent);
+                        Preferences.Set(Constants.UserDetails, serializedUserDetails);
+
+                        await _navigationService.NavigateAsync("/MainFlyoutPage/NavigationPage/MainPage");
+                        UserDialogs.Instance.Loading().Dispose();
+                        UserDialogs.Instance.Toast("Login successful");
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Loading().Dispose();
+                        await UserDialogs.Instance.AlertAsync("Something went wrong, please try again", "Error", "OK");
+                        return;
+                    }
+
                 }
                 else
                 {
+                    UserDialogs.Instance.Loading().Dispose();
                     await UserDialogs.Instance.AlertAsync("Something went wrong, please try again", "Error", "OK");
                     return;
                 }
