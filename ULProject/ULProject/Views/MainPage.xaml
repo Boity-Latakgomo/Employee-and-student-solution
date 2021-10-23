@@ -21,7 +21,7 @@
         <StackLayout>
         <Image Source="banner.jpg"
                Aspect="Fill"
-               HeightRequest="200"/>
+               HeightRequest="300"/>
             
 
             <Grid HorizontalOptions="FillAndExpand"
@@ -35,7 +35,8 @@
                        CornerRadius="10"
                        Grid.Column="1"
                        Margin="8">
-                    <StackLayout HorizontalOptions="Center">
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
                         <Image Source="application.png"/>
                         <Label Text="Leave Application"
                                HorizontalTextAlignment="Center"
@@ -52,7 +53,8 @@
                        BackgroundColor="#8569AF"
                        Grid.Column="0"
                        Margin="8">
-                    <StackLayout HorizontalOptions="Center">
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
                         <Image Source="profile.png"/>
                         <Label Text="Profile" 
                                HorizontalTextAlignment="Center"
@@ -69,7 +71,18 @@
                        CornerRadius="10"
                        BackgroundColor="#8569AF"
                        Margin="8">
-                    <Label Text="Label3" />
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <Image Source="taskicon.png"/>
+                        <Label Text="Work Items"
+                               HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryLightTextColor}"
+                           FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TaskCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame HasShadow="True"
                        Grid.Row="1"
@@ -77,23 +90,17 @@
                        BackgroundColor="#8569AF"
                        Grid.Column="1"
                        Margin="8">
-                    <Label Text="Label4" />
-                </Frame>
-                <Frame HasShadow="True"
-                       Grid.Row="2"
-                       CornerRadius="10"
-                       Grid.Column="0"
-                       BackgroundColor="#8569AF"
-                       Margin="8">
-                    <Label Text="Label5" />
-                </Frame>
-                <Frame HasShadow="True"
-                       Grid.Row="2"
-                       CornerRadius="10"
-                       Grid.Column="1"
-                       BackgroundColor="#8569AF"
-                       Margin="8">
-                    <Label Text="Label6" />
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <Image Source="studenticon.png"/>
+                        <Label Text="Students and Employement"
+                               HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryLightTextColor}"
+                           FontAttributes="Bold"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SubmitsCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
             </Grid>
         </StackLayout>

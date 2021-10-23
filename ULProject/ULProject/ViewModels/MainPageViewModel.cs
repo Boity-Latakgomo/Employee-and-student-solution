@@ -1,4 +1,5 @@
-﻿using Acr.UserDialogs.Infrastructure;
+﻿using Acr.UserDialogs;
+using Acr.UserDialogs.Infrastructure;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -16,6 +17,8 @@ namespace ULProject.ViewModels
         //public DelegateCommand LogoutCommand { get; }
         public DelegateCommand LeaveApplicationOptionCommand { get; }
         public DelegateCommand ProfileCommand { get; }
+        public DelegateCommand TaskCommand { get; }
+        public DelegateCommand SubmitsCommand { get; }
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
@@ -24,8 +27,18 @@ namespace ULProject.ViewModels
             //LogoutCommand = new DelegateCommand(logout);
             LeaveApplicationOptionCommand = new DelegateCommand(navigateToLeaveApplication);
             ProfileCommand = new DelegateCommand(navigateToProfile);
+            TaskCommand = new DelegateCommand(NavigateToWorkItems);
+            SubmitsCommand = new DelegateCommand(NavigateToSubmits);
         }
 
+        private void NavigateToSubmits()
+        {
+            UserDialogs.Instance.Toast("To be implemented");
+        }
+        private async void NavigateToWorkItems()
+        {
+            await _navigationService.NavigateAsync("TasksPage");
+        }
         private async void navigateToProfile()
         {
             await _navigationService.NavigateAsync("ProfilePage");

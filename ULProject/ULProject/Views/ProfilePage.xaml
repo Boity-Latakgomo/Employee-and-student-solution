@@ -74,19 +74,22 @@
                        FontSize="24"/>
             </Grid>
 
-            <BoxView Color="#991DFF"
+            <BoxView Color="#411780"
                      HeightRequest="1"
                      HorizontalOptions="Center"
                      WidthRequest="100"/>
         </StackLayout>
         <Frame Grid.Row="2"
-               BackgroundColor="#991DFF"
+               BackgroundColor="#411780"
                HorizontalOptions="End"
                WidthRequest="40"
                HeightRequest="40"
                HasShadow="True"
                CornerRadius="50">
             <Image Source="editpen.png"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OpenDialogForEditCommand}" />
+            </Frame.GestureRecognizers>
         </Frame>
     </Grid>
 

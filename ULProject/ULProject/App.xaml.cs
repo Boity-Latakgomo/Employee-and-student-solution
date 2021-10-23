@@ -15,7 +15,7 @@ namespace ULProject
     //boitylatakgomo@gmail.com -> Employee-and-Student-Solution
 
     // Firebase
-    // This app uses firebase realtime database and firebase Auth: email -> wDeveloper , project -> Practice
+    // This app uses firebase realtime database and firebase Auth: email -> boitumelolatakgomo@gmail.com , project -> Employee and Student solution
     // -> New Project 2 
     public partial class App
     {
@@ -56,6 +56,8 @@ namespace ULProject
 
             containerRegistry.RegisterDialog<ResetPasswordDialog, ResetPasswordDialogViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
+            containerRegistry.RegisterDialog<EditUserDetailsDialog, EditUserDetailsDialogViewModel>();
+            containerRegistry.RegisterForNavigation<TasksPage, TasksPageViewModel>();
         }
     }
 }

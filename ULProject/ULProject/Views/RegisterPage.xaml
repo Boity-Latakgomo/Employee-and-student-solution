@@ -44,9 +44,11 @@
                                          Text="{Binding RegisterSurname}"/>
             <controls:FloatingLabelInput Title="Phone number"
                                          Margin="0, 24, 0, 0"
+                                         Keyboard="Telephone"
                                          Text="{Binding RegisterPhoneNumber}"/>
             <controls:FloatingLabelInput Title="Email" 
                                          Margin="0, 24, 0, 0"
+                                         Keyboard="Email"
                                          Text="{Binding RegisterEmail}"/>
             <controls:FloatingLabelInput Title="Password" 
                                          Margin="0, 24, 0, 0"

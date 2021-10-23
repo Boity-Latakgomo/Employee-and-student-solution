@@ -13,7 +13,7 @@
                 <StackLayout VerticalOptions="StartAndExpand"
                              Padding="0, 0, 0, 8">
                 <RelativeLayout VerticalOptions="StartAndExpand"
-                                BackgroundColor="Green">
+                                BackgroundColor="#E93BA3">
                         <Image Source="flyout_icon"
                             Aspect="AspectFit"
                        x:Name="FlyoutImage"
@@ -35,7 +35,7 @@
                         Property=Height,
                         Factor=0,
                         Constant=5}"
-                           TextColor="{StaticResource PrimaryLightTextColor}"/>
+                           TextColor="{StaticResource LighterPrimaryColor}"/>
                 </RelativeLayout>
 
                     <Label Text="Page 1"

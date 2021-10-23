@@ -29,6 +29,7 @@
                     TextColor="#C7C7C7"/>
            <controls:FloatingLabelInput Title="Email"
                                         Padding="8, 2"
+                                        Keyboard="Email"
                                         Margin="0, 24, 0, 0"
                                         Text="{Binding EmailAddress}"/>
             <controls:FloatingLabelInput Title="Password" 

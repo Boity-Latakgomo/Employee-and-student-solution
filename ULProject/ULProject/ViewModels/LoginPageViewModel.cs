@@ -96,6 +96,7 @@ namespace ULProject.ViewModels
 
                     var userId = auth.User.LocalId;
 
+
                     DatabaseServices databaseServices = new DatabaseServices();
                     UserDetails user = await databaseServices.GetUser(userId);
                     if(user != null)

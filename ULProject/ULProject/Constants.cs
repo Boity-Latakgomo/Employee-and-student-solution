@@ -8,6 +8,6 @@ namespace ULProject
     {
         public static string TokenKey = "FirebaseRefreshToken";
         public static string UserDetails = "UserDetails";
-        public static string WebAPIkey = "AIzaSyDcHLXN7wYeKbOmMhMeB5CuSMq4DhfP_Dw";
+        public static string WebAPIkey = "AIzaSyDrPhSea9oKN2n0idLw6cZlkhFXMJl4qLw";
     }
 }

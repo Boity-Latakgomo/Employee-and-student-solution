@@ -13,10 +13,10 @@ namespace ULProject.Services
     public class DatabaseServices : IDatabaseServices
     {
         #region firebase constants
-        private static string auth = "xCWrwXdGYLhPoU8eAKG2D1DG2TQp7xuGTcRvfQGV"; //  app secret
+        private static string auth = "ySbSRzvoXD2Z26pGfePP2PsUe3BWEYDFdbjfoOCm"; //  app secret
 
         //FirebaseClient firebase = new FirebaseClient("https://practice-ce7fe-default-rtdb.firebaseio.com/");
-        FirebaseClient firebase = new FirebaseClient("https://practice-ce7fe-default-rtdb.firebaseio.com/", 
+        FirebaseClient firebase = new FirebaseClient("https://employee-and-student-solution-default-rtdb.firebaseio.com/", 
             new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(auth) });
         #endregion
 
@@ -72,6 +72,30 @@ namespace ULProject.Services
                   PhoneNumber = item.Object.PhoneNumber,
                   Surname = item.Object.Surname
               }).ToList().FirstOrDefault();
+        }
+
+        public async Task UpdateUserDetails(string EmailUserID, UserDetails userDetails)
+        {
+            var toUpdateUser = (await firebase
+             .Child("EmployeeSolution")
+            .Child("Users")
+            .Child(EmailUserID)
+              .OnceAsync<UserDetails>()).Where(a => a.Object.EmailUserID == EmailUserID).FirstOrDefault();
+
+            await firebase
+             .Child("EmployeeSolution")
+            .Child("Users")
+            .Child(EmailUserID)
+              .Child(toUpdateUser.Key)  
+              .PutAsync<UserDetails>(new UserDetails()
+              {
+                  FullName = userDetails.FullName,
+                  PhoneNumber = userDetails.PhoneNumber,
+                  Surname = userDetails.Surname,
+                  EmailAddress = userDetails.EmailAddress,
+                  EmailUserID = userDetails.EmailUserID
+                 
+              });  
         }
 
         //public async Task<bool> NoteExist()

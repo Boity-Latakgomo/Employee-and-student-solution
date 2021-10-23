@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Prism.AppModel;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +14,36 @@ using Xamarin.Essentials;
 
 namespace ULProject.ViewModels
 {
-    public class ProfilePageViewModel : BindableBase
+    public class ProfilePageViewModel : BindableBase, IPageLifecycleAware
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
-        public ProfilePageViewModel()
+        private string emailUserId;
+        public DelegateCommand OpenDialogForEditCommand { get; }
+        private IDialogService _dialogService;
+        public ProfilePageViewModel(IDialogService dialogService)
         {
-            PopulateUserDetails();
+            
+            OpenDialogForEditCommand = new DelegateCommand(OpenDialogForEdit);
+            _dialogService = dialogService;
+
+        }
+
+        private async void OpenDialogForEdit()
+        {
+            var parameters = new DialogParameters
+            {
+                { "UserDetails", new UserDetails{
+                    FullName = Name,
+                    EmailAddress = EmailAddress,
+                    PhoneNumber = PhoneNumber,
+                    Surname = Surname,
+                    EmailUserID = emailUserId
+                } }
+            };
+            _dialogService.ShowDialog("EditUserDetailsDialog", parameters);
 
         }
 
@@ -32,6 +56,18 @@ namespace ULProject.ViewModels
             Surname = user.Surname;
             PhoneNumber = user.PhoneNumber;
             EmailAddress = user.EmailAddress;
+            emailUserId = user.EmailUserID;
+
+        }
+
+        public void OnAppearing()
+        {
+            PopulateUserDetails();
+        }
+
+        public void OnDisappearing()
+        {
+           
         }
     }
 }

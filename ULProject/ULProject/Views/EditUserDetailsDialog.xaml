@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.EditUserDetailsDialog"
+             xmlns:controls="clr-namespace:ULProject.Controls">
+
+    <StackLayout HorizontalOptions="FillAndExpand">
+        <Image Source="icon_cancel"
+               HeightRequest="36"
+               HorizontalOptions="End">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Frame Margin="18, 0"
+               Padding="8"
+               BackgroundColor="#411780"
+               CornerRadius="10"
+               HorizontalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="Edit Profile"
+                       Margin="0, 0, 130, 0"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <controls:FloatingLabelInput    Title="Name"
+                                                Padding="8, 2"
+                                                Keyboard="Email"
+                                                Margin="0, 24, 0, 0"
+                                                Text="{Binding Name}"/>
+                <controls:FloatingLabelInput    Title="Surname"
+                                                Padding="8, 2"
+                                                Margin="0, 24, 0, 0"
+                                                Text="{Binding Surname}"/>
+                <controls:FloatingLabelInput    Title="Phone No"
+                                                Padding="8, 2"
+                                                Keyboard="Telephone"
+                                                Margin="0, 24, 0, 0"
+                                                Text="{Binding PhoneNumber}"
+                                                HorizontalOptions="FillAndExpand"/>
+                <Button Text="Save"
+                        CornerRadius="10"
+                        HorizontalOptions="CenterAndExpand"
+                        Padding="8, 2"
+                        BackgroundColor="{StaticResource PinkTextColor}"
+                        TextColor="{StaticResource PrimaryLightTextColor}"
+                        Command="{Binding EditProfileCommand}"/>
+            </StackLayout>
+        </Frame>
+
+
+    </StackLayout>
+    
+</RelativeLayout>
