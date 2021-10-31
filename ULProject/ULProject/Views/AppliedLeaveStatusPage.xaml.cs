@@ -1,12 +1,10 @@
-﻿using ULProject.Models;
-using ULProject.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace ULProject.Views
 {
-    public partial class TasksPage : ContentPage
+    public partial class AppliedLeaveStatusPage : ContentPage
     {
-        public TasksPage()
+        public AppliedLeaveStatusPage()
         {
             InitializeComponent();
         }
@@ -15,7 +13,7 @@ namespace ULProject.Views
         {
             if (((ListView)sender).SelectedItem == null)
                 return;
-            (BindingContext as TasksPageViewModel).TaskEdit((TaskType)((ListView)sender).SelectedItem);
+
             ((ListView)sender).SelectedItem = null;
         }
     }

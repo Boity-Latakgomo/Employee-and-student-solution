@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using ULProject.Services;
 using Xamarin.Essentials;
 
@@ -29,6 +30,12 @@ namespace ULProject.ViewModels
         {
             UserDialogs.Instance.Loading();
 
+            if(!Regex.IsMatch(RegisterFullNames, @"^[a-zA-Z]+$") || !Regex.IsMatch(RegisterSurname, @"^[a-zA-Z]+$"))
+            {
+                UserDialogs.Instance.Toast("Your entered an invalid name or surname");
+                UserDialogs.Instance.Loading().Dispose();
+                return;
+            }
             // Check for connectivity before making any connections
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {

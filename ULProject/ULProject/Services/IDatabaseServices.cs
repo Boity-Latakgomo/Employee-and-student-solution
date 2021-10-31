@@ -7,6 +7,6 @@ namespace ULProject.Services
 {
     public interface IDatabaseServices
     {
-        Task<bool> AddLeaveApplicationDetails(string inputLeave, string inputNumberOfDays, string inputDescription);
+        Task<bool> AddLeaveApplicationDetails(string userEmail, string inputLeave, string inputDescription, string startDate, string endDate, string leaveID);
     }
 }

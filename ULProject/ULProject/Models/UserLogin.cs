@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ULProject.Models
 {
-    class UserLogin
+    public class UserLogin
     {
         public string EmailAddress { get; set; }
         public string Password { get; set; }

@@ -31,12 +31,25 @@
                                       ItemsSource="{Binding Leave}"
                                       ItemDisplayBinding="{Binding Type}"
                                       SelectedItem="{Binding SelectedLeave}"/>
-        <Label Text="Number of days"
+
+                <Label Text="Start Date"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"
+                       Margin="2, 8, 0 ,0"/>
+                <DatePicker Date="{Binding StartDate}"
+                       Margin="0"/>
+
+                <Label Text="End Date"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"
+                       Margin="2, 8, 0 ,0"/>
+                <DatePicker Date="{Binding EndDate}"
+                       Margin="0"/>
+            
+                <!--<Label Text="Number of days"
                TextColor="{StaticResource PrimaryDarkTextColor}"
                Margin="2, 8, 0 ,0"/>
                 <controls:NonlinedBorderedEntry Margin="0"
                                                 Keyboard="Numeric"
-                                                Text="{Binding NumberOfDays}"/>
+                                                Text="{Binding NumberOfDays}"/>-->
 
                 <Label Text="Description"
                TextColor="{StaticResource PrimaryDarkTextColor}"

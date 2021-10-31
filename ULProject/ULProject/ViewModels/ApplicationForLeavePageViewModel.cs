@@ -14,8 +14,9 @@ namespace ULProject.ViewModels
     public class ApplicationForLeavePageViewModel : ViewModelBase
     {
         // This is binded as ItemsSource in a picker
-        public string NumberOfDays { get; set; }
         public string Description { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Now;
+        public DateTime EndDate { get; set; } = DateTime.Now;
         public IList<LeaveType> Leave { get; set; }
         public DelegateCommand SaveCommand { get; }
         public DelegateCommand CancelCommand { get; }
@@ -67,7 +68,7 @@ namespace ULProject.ViewModels
             //}
             //UserDialogs.Instance.Alert(SelectedLeave.Type + " selected");
             string Leave = SelectedLeave.Type;
-            if (SelectedLeave != null && !string.IsNullOrEmpty(NumberOfDays) && !string.IsNullOrEmpty(Description))
+            if (SelectedLeave != null && !string.IsNullOrEmpty(Description))
             {
                 Save(Leave);
             }
@@ -78,9 +79,17 @@ namespace ULProject.ViewModels
         }
         private async Task Save(string Leave)
         {
+            string stringStartDate = StartDate.ToString("dd/MM/yyyy");
+            string stringEndDate = EndDate.ToString("dd/MM/yyyy");
+            string userEmail = TokenService.GetUserEmail();
+            
+            Random random = new Random();
+            int randomNumber = random.Next(10, 100000);
+            string leaveID = randomNumber.ToString();
+
             UserDialogs.Instance.Loading("Saving...");
             DatabaseServices databaseService = new DatabaseServices();
-            bool isSuccessful = await databaseService.AddLeaveApplicationDetails(Leave, NumberOfDays, Description);
+            bool isSuccessful = await databaseService.AddLeaveApplicationDetails(userEmail, Leave, Description, stringStartDate, stringEndDate, leaveID);
             if (isSuccessful) 
             {
                 UserDialogs.Instance.Loading().Dispose();

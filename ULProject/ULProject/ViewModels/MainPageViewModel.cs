@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace ULProject.ViewModels
@@ -28,12 +29,12 @@ namespace ULProject.ViewModels
             LeaveApplicationOptionCommand = new DelegateCommand(navigateToLeaveApplication);
             ProfileCommand = new DelegateCommand(navigateToProfile);
             TaskCommand = new DelegateCommand(NavigateToWorkItems);
-            SubmitsCommand = new DelegateCommand(NavigateToSubmits);
+            SubmitsCommand = new DelegateCommand(() => NavigateToSubmits());
         }
 
-        private void NavigateToSubmits()
+        private async Task NavigateToSubmits()
         {
-            UserDialogs.Instance.Toast("To be implemented");
+            await _navigationService.NavigateAsync("StudentsPage");
         }
         private async void NavigateToWorkItems()
         {

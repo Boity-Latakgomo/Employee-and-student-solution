@@ -18,14 +18,28 @@ namespace ULProject.ViewModels
     public class MainFlyoutPageViewModel : ViewModelBase, IPageLifecycleAware
     {
         public DelegateCommand LogoutCommand { get; }
+        public DelegateCommand LeaveStatusCommand { get; }
+        public DelegateCommand HomeCommand { get; }
         public string NameAndSurname { get; set; }
 
         INavigationService _navigation;
         public MainFlyoutPageViewModel(INavigationService navigation) : base(navigation)
         {
             LogoutCommand = new DelegateCommand(logout);
+            LeaveStatusCommand = new DelegateCommand(() => ViewLeaveStatus());
+            HomeCommand = new DelegateCommand(() => ViewHomePage());
 
             _navigation = navigation;
+        }
+
+        private async Task ViewLeaveStatus()
+        {
+            await _navigation.NavigateAsync("NavigationPage/AppliedLeaveStatusPage");
+        }
+
+        private async Task ViewHomePage()
+        {
+            await _navigation.NavigateAsync("NavigationPage/MainPage");
         }
 
         private async void logout()
@@ -45,7 +59,7 @@ namespace ULProject.ViewModels
 
         public void OnDisappearing()
         {
-           
+
         }
     }
 }

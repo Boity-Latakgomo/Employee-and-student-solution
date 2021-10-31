@@ -20,14 +20,24 @@ namespace ULProject.Services
             new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(auth) });
         #endregion
 
-        public async Task<bool> AddLeaveApplicationDetails(string inputLeave, string inputNumberOfDays, string inputDescription)
+        public async Task<bool> AddLeaveApplicationDetails(string userEmail, string inputLeave, string inputDescription, string startDate, string endDate, string leaveID)
         {
               FirebaseObject<LeaveApplication> response = await firebase
               .Child("EmployeeSolution")
               .Child("LeaveApplication")
-              .Child(TokenService.GetUserID())
               //.PostAsync( new LeaveApplication() { EmailUserID = userID, Leave = "Sick leave", NumberOfDays = "7", Description = "Flue"});
-              .PostAsync<LeaveApplication>( new LeaveApplication() { EmailUserID = TokenService.GetUserID(), Leave = inputLeave, NumberOfDays = inputNumberOfDays, Description = inputDescription });
+              .PostAsync<LeaveApplication>( new LeaveApplication() 
+              {
+                 Email = userEmail,
+                 EmailUserID = TokenService.GetUserID(),
+                 Leave = inputLeave,
+                 Description = inputDescription,
+                 StartDate = startDate,
+                 EndDate = endDate,
+                 Status = "Pending",
+                 Comment = "",
+                 LeaveID = leaveID
+              });
             
             if(!string.IsNullOrEmpty(response.Key) && response.Object != null)
             {
@@ -36,12 +46,23 @@ namespace ULProject.Services
             return false;
         }
 
+        public async Task SubmitOpportunity(Opportunity opportunity)
+        {
+            FirebaseObject<Opportunity> response = await firebase
+              .Child("StudentSolution")
+            .Child("Opportunities")
+            .PostAsync<Opportunity>(new Opportunity()
+            {
+                Title = opportunity.Title,
+                Details = opportunity.Details
+            });
+        }
+
         public async Task<bool> AddUser(UserRegister userDetails, string userId)
         {
             FirebaseObject<UserDetails> response = await firebase
             .Child("EmployeeSolution")
             .Child("Users")
-            .Child(userId)
             //.PostAsync( new LeaveApplication() { EmailUserID = userID, Leave = "Sick leave", NumberOfDays = "7", Description = "Flue"});
             .PostAsync<UserDetails>(new UserDetails()
             {
@@ -54,38 +75,91 @@ namespace ULProject.Services
 
             if (!string.IsNullOrEmpty(response.Key) && response.Object != null)
             {
+                //await AddUserEmail(userDetails.EmailAddress);
                 return true;
             }
             return false;
         }
 
-        public async Task<UserDetails> GetUser(string EmailUserID)
+        //private async Task AddUserEmail(string email)
+        //{
+        //    FirebaseObject<UserEmail> response = await firebase
+        //    .Child("EmployeeSolution")
+        //    .Child("UserEmails")
+        //    //.PostAsync( new LeaveApplication() { EmailUserID = userID, Leave = "Sick leave", NumberOfDays = "7", Description = "Flue"});
+        //    .PostAsync<UserEmail>(new UserEmail()
+        //    {
+        //        Email = email
+        //    });
+        //}
+
+
+        public async Task<UserDetails> GetUser(string UserID)
         {
-            return (await firebase
+            var allUsers = (await firebase
              .Child("EmployeeSolution")
             .Child("Users")
-            .Child(EmailUserID)
               .OnceAsync<UserDetails>()).Select(item => new UserDetails
               {
                   EmailAddress = item.Object.EmailAddress,
+                  EmailUserID = item.Object.EmailUserID,
                   FullName = item.Object.FullName,
                   PhoneNumber = item.Object.PhoneNumber,
                   Surname = item.Object.Surname
-              }).ToList().FirstOrDefault();
+              }).ToList();
+
+            return allUsers.Where(a => a.EmailUserID == UserID).FirstOrDefault();
         }
+
+        public async Task<List<TaskType>> GetTasks(string email)
+        {
+            return (await firebase
+             .Child("EmployeeSolution")
+            .Child("EmployeeTasks")
+              .OnceAsync<TaskType>()).Select(item => new TaskType
+              {
+                  Email = item.Object.Email,
+                  Title = item.Object.Title,
+                  Details = item.Object.Details,
+                  Status = item.Object.Status,
+                  TaskId = item.Object.TaskId
+              }).Where(item => item.Email == email).ToList();
+        }
+
+        public async Task<List<LeaveApplication>> GetAllAppliedLeaves(string UserID)
+        {
+            var allUsers = (await firebase
+             .Child("EmployeeSolution")
+            .Child("LeaveApplication")
+              .OnceAsync<LeaveApplication>()).Select(item => new LeaveApplication
+              {
+                  Leave = item.Object.Leave,
+                  Description = item.Object.Description,
+                  StartDate = item.Object.StartDate,
+                  EndDate = item.Object.EndDate,
+                  EmailUserID = item.Object.EmailUserID,
+                  Comment = item.Object.Comment,
+                  Email = item.Object.Email,
+                  LeaveID = item.Object.LeaveID,
+                  Status = item.Object.Status
+                  
+              }).ToList();
+
+            return allUsers.Where(a => a.EmailUserID == UserID).ToList();
+        }
+
+
 
         public async Task UpdateUserDetails(string EmailUserID, UserDetails userDetails)
         {
             var toUpdateUser = (await firebase
              .Child("EmployeeSolution")
             .Child("Users")
-            .Child(EmailUserID)
               .OnceAsync<UserDetails>()).Where(a => a.Object.EmailUserID == EmailUserID).FirstOrDefault();
 
             await firebase
              .Child("EmployeeSolution")
             .Child("Users")
-            .Child(EmailUserID)
               .Child(toUpdateUser.Key)  
               .PutAsync<UserDetails>(new UserDetails()
               {
@@ -96,6 +170,16 @@ namespace ULProject.Services
                   EmailUserID = userDetails.EmailUserID
                  
               });  
+        }
+        
+
+        public async Task RemoveTask(string taskID)
+        {
+            var toDeleteTask = (await firebase
+            .Child("EmployeeSolution")
+            .Child("EmployeeTasks")
+            .OnceAsync<TaskType>()).Where(a => a.Object.TaskId == taskID).FirstOrDefault();
+            await firebase.Child("EmployeeSolution").Child("EmployeeTasks").Child(toDeleteTask.Key).DeleteAsync();
         }
 
         //public async Task<bool> NoteExist()

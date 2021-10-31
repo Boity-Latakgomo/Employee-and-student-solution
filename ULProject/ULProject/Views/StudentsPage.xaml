@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.StudentsPage"
+             Title="Send Opportunities">
+
+    <Grid RowDefinitions="Auto, Auto, Auto"
+          Margin="8"
+          VerticalOptions="CenterAndExpand">
+        <Entry Text="{Binding Title}"
+               Placeholder="Enter Title"
+               Grid.Row="0"/>
+        <Frame Margin="0"
+               Padding="8, 0"
+               Grid.Row="1"
+               HasShadow="False"
+               WidthRequest="1"
+               BorderColor="Black">
+            <Editor Text="{Binding Details}"
+               Placeholder="Enter Details"
+               VerticalOptions="Start"
+                HeightRequest="200"/>
+        </Frame>
+        
+        <Button Text="submit"
+                Grid.Row="2"
+                BackgroundColor="#B02079"
+                TextColor="#C7C7C7" 
+                Margin="30, 8, 30, 12"
+                CornerRadius="18"
+                Command="{Binding SubmitCommand}"/>
+    </Grid>
+  
+</ContentPage>

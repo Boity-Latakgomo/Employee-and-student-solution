@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ULProject.Views.ManageTaskDialog">
+
+    <StackLayout>
+        <Image Source="icon_cancel"
+               HeightRequest="36"
+               HorizontalOptions="End">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Frame Margin="18, 0"
+               Padding="8"
+               BackgroundColor="White"
+               CornerRadius="10">
+            <StackLayout>
+                <Label Text="Manage Task"
+                       Margin="0, 0, 130, 0"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+                <Label 
+                       Margin="0, 0, 8, 0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Title: "/>
+                            <Span Text="{Binding TaskDetails.Title}" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label 
+                       Margin="0, 0, 8, 0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Details: "/>
+                            <Span Text="{Binding TaskDetails.Details}" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Text="Resolved"
+                        CornerRadius="10"
+                        HorizontalOptions="CenterAndExpand"
+                        Padding="8, 2"
+                        BackgroundColor="#B02079"
+                        TextColor="White"
+                        Command="{Binding SubmitCommand}"/>
+            </StackLayout>
+        </Frame>
+
+
+    </StackLayout>
+
+</StackLayout>

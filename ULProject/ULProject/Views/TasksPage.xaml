@@ -5,7 +5,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ULProject.Views.TasksPage"
              Title="Work Items">
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh"
+                     Command="{Binding RefreshCommand}"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+
     <ListView ItemsSource="{Binding Tasks}"
               ItemSelected="ListView_ItemSelected"
               HasUnevenRows="True"
@@ -19,14 +25,14 @@
                            CornerRadius="5">
                         <Grid ColumnDefinitions="*, Auto">
                             <StackLayout Grid.Column="0">
-                                <Grid ColumnDefinitions="*, 3.5*">
+                                <Grid ColumnDefinitions="Auto,*">
                                     <Frame BackgroundColor="Green"
                                        HorizontalOptions="Start"
                                        Grid.Column="0"
                                        CornerRadius="5"
                                        Margin="0"
                                        Padding="3">
-                                        <Label Text="Active"
+                                        <Label Text="{Binding Status}"
                                            TextColor="White"
                                            FontSize="8"/>
                                     </Frame>
@@ -43,10 +49,10 @@
                                      HeightRequest="1"/>
                                 <Label 
                                    LineBreakMode="TailTruncation"
-                                   Text="{Binding Task}"
+                                   Text="{Binding Details}"
                                    TextColor="Black"
                                    MaxLines="2"
-                                   HorizontalOptions="CenterAndExpand"/>
+                                   HorizontalOptions="StartAndExpand"/>
                             </StackLayout>
                             <Image Grid.Column="1"
                                    Source="rightarrowicon.png"/>

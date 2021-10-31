@@ -28,6 +28,12 @@ namespace ULProject.Services
             return tokenObject.idToken;
         }
 
+        public static string GetUserEmail()
+        {
+            Token tokenObject = GetTokenObject();
+            return tokenObject.User.email;
+        }
+
         public static string GetUserID()
         {
             Token tokenObject = GetTokenObject();

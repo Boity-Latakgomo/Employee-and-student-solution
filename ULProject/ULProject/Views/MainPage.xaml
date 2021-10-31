@@ -93,7 +93,7 @@
                     <StackLayout HorizontalOptions="Center"
                                  VerticalOptions="Center">
                         <Image Source="studenticon.png"/>
-                        <Label Text="Students and Employement"
+                        <Label Text="Students Opportunities"
                                HorizontalTextAlignment="Center"
                            TextColor="{StaticResource PrimaryLightTextColor}"
                            FontAttributes="Bold"/>

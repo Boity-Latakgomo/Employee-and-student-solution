@@ -58,6 +58,9 @@ namespace ULProject
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterDialog<EditUserDetailsDialog, EditUserDetailsDialogViewModel>();
             containerRegistry.RegisterForNavigation<TasksPage, TasksPageViewModel>();
+            containerRegistry.RegisterForNavigation<AppliedLeaveStatusPage, AppliedLeaveStatusPageViewModel>();
+            containerRegistry.RegisterDialog<ManageTaskDialog, ManageTaskDialogViewModel>();
+            containerRegistry.RegisterForNavigation<StudentsPage, StudentsPageViewModel>();
         }
     }
 }

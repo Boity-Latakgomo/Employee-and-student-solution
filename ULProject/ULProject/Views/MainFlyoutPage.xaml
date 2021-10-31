@@ -38,17 +38,25 @@
                            TextColor="{StaticResource LighterPrimaryColor}"/>
                 </RelativeLayout>
 
-                    <Label Text="Page 1"
+                    <Label Text="Leave Status"
                            FontSize="18"
                            Margin="8, 0"
-                           TextColor="{StaticResource PinkTextColor}"/>
+                           TextColor="{StaticResource PinkTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeaveStatusCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <BoxView HeightRequest="1"
                              Color="#707070"
                              Margin="8"/>
-                    <Label Text="Page 2"
+                    <Label Text="Home"
                            FontSize="18"
                            Margin="8, 0"
-                           TextColor="{StaticResource PinkTextColor}"/>
+                           TextColor="{StaticResource PinkTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HomeCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
                     <BoxView HeightRequest="1"
                              Color="#707070"
